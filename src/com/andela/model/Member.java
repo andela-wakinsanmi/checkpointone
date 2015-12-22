@@ -1,11 +1,14 @@
 package com.andela.model;
 
+import com.andela.member.Staff;
+import com.andela.member.Student;
+
 import java.util.Date;
 
 /**
  * Created by Spykins on 21/12/2015.
  */
-public class Member {
+public class Member implements Comparable<Member> {
   private String memberName;
   private int memberIdNumber;
   private Date memberRegistrationDate;
@@ -39,5 +42,14 @@ public class Member {
 
   public void setMemberAddress(String memberAddress) {
     this.memberAddress = memberAddress;
+  }
+
+  @Override
+  public int compareTo(Member objectPassed) {
+    if(this instanceof Student && objectPassed instanceof Staff){
+      return 1;
+    } else {
+      return this.getMemberRegistrationDate().compareTo(objectPassed.getMemberRegistrationDate());
+    }
   }
 }

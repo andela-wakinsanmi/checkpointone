@@ -61,7 +61,11 @@ public class BookQueueTest {
 
   @Test
   public void testHasQueueForBookRequested() throws Exception {
-    Book myBook10 = new Book("RWhat goes Around", 530462, "James hill", 2);
+    Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
+
+    myTestQueue.addMemberToQueue(myBook1, myMemberStaff1);
+    myTestQueue.addMemberToQueue(myBook2,myMemberStaff2);
+    myTestQueue.addMemberToQueue(myBook2, myMemberStudent1);
 
     assertTrue(myTestQueue.hasQueueForBookRequested(myBook1));
     assertTrue(!myTestQueue.hasQueueForBookRequested(myBook10));

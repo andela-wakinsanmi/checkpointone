@@ -16,7 +16,13 @@ public class BookQueue {
     queueForBook = new HashMap<Book, PriorityQueue<Member>>();
   }
   public void addMemberToQueue(Book bookRequested, Member memberRequestingForBook){
-
+    if(hasQueueForBookRequested(bookRequested)){
+      queueForBook.get(bookRequested).add(memberRequestingForBook);
+    } else {
+      PriorityQueue<Member> newBookQueue = new PriorityQueue<Member>();
+      newBookQueue.add(memberRequestingForBook);
+      queueForBook.put(bookRequested, newBookQueue);
+    }
   }
   public void removeMemberFromQueue(Book bookMemberBorrowed, Member memberWithBook){
 
@@ -26,7 +32,8 @@ public class BookQueue {
   }
 
   public boolean hasQueueForBookRequested(Book bookRequested){
-    return true;
+    if(queueForBook.containsKey(bookRequested)) return true;
+    else return false;
   }
 
   public boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook){
