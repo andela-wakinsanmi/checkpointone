@@ -24,11 +24,9 @@ public class BookQueue {
       queueForBook.put(bookRequested, newBookQueue);
     }
   }
-  public void removeMemberFromQueue(Book bookMemberBorrowed, Member memberWithBook){
 
-  }
   public Member returnEligibleMemberForABook(Book bookRequested){
-    return null;
+    return queueForBook.get(bookRequested).poll();
   }
 
   public boolean hasQueueForBookRequested(Book bookRequested){
@@ -37,7 +35,11 @@ public class BookQueue {
   }
 
   public boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook){
-    return false;
+    if (queueForBook.containsKey(bookRequested)) {
+      if(queueForBook.get(bookRequested).contains(memberRequestingForBook)) return true;
+      else return false;
+    } else
+      return false;
   }
 
 }

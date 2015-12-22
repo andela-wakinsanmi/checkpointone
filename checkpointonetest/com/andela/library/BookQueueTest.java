@@ -32,21 +32,12 @@ public class BookQueueTest {
     assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff1));
     assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff2));
   }
-
-  @Test
-  public void testRemoveMemberFromQueue() throws Exception {
-    myTestQueue.removeMemberFromQueue(myBook1, myMemberStaff1);
-    myTestQueue.removeMemberFromQueue(myBook2, myMemberStaff2);
-
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff1));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStudent1));
-    assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff1));
-    assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff2));
-
-  }
-
   @Test
   public void testReturnEligibleMemberForABook() throws Exception {
+    myTestQueue.addMemberToQueue(myBook1, myMemberStaff1);
+    myTestQueue.addMemberToQueue(myBook2,myMemberStaff2);
+    myTestQueue.addMemberToQueue(myBook2, myMemberStudent1);
+
     Member myMemberStudent3 = new Student("George", 7301, "kafashan, Kaduna State");
     Member myMemberStudent4 = new Student("Bodunde", 6810);
     Member myMemberStaff3 = new Staff("Mainu", 2410);
@@ -72,7 +63,11 @@ public class BookQueueTest {
   }
   @Test
   public void testIsMemberAlreadyinQueue() throws Exception {
+    myTestQueue.addMemberToQueue(myBook1, myMemberStaff1);
+    myTestQueue.addMemberToQueue(myBook2,myMemberStaff2);
+    myTestQueue.addMemberToQueue(myBook2, myMemberStudent1);
     Member myMemberStaff10 = new Member("Blessing", 46729);
+
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff1));
     assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff10));
   }
