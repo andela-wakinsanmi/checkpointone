@@ -41,6 +41,7 @@ public class ReadersClubTest {
   }
 
   @Test
+
   public void testAddBookToLibrary() throws Exception {
     Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
     Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
@@ -98,7 +99,7 @@ public class ReadersClubTest {
 
     HashMap<Book, Member>eligibleMember = new HashMap<>();
     eligibleMember.put(myBook1, myMemberStaff1);
-    assertTrue(readersClub.returnBookToEligibleMember().equals(eligibleMember));
+    assertTrue(readersClub.returnBookToEligibleMember(myBook1).equals(eligibleMember));
 
   }
 }
