@@ -46,14 +46,16 @@ public class ReadersClub {
   private void addBooksToBookAvailableToBorrow(Book[] newBookToAdd){
 
   }
-  public Book requestForBook(Member memberRequesting, Book bookMemberRequestsFor){
+  public void requestForBook(Member memberRequesting, Book bookMemberRequestsFor){
 
+  }
+  public Map<Book, Member> returnBookToEligibleMember(){
     return null;
   }
-  private boolean isMemberAvailableInLibrary(Member memberRequesting){
+  public boolean isMemberAvailableInLibrary(Member memberRequesting){
     return true;
   }
-  private boolean isBookAvailableInLibrary(Book bookRequestingFor){
+  public boolean isBookAvailableInLibrary(Book bookRequestingFor){
     return true;
   }
   private boolean isBookAvailableToBorrow(Book bookRequestingFor){
