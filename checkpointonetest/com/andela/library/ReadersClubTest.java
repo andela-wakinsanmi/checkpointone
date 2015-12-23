@@ -58,6 +58,7 @@ public class ReadersClubTest {
     Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
     Book[] bookArray = {myBook1, myBook2};
     readersClub.addBooksToLibrary(bookArray);
+    readersClub.addBookToLibrary(myBook1, myBook2);
     assertTrue(readersClub.isBookAvailableInLibrary(myBook1));
     assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
   }

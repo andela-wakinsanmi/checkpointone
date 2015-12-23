@@ -21,18 +21,16 @@ public class ReadersClub {
   public ReadersClub(BookQueue bookQueue, Member newMember, Book newBook){
     this.bookQueue = bookQueue;
     initializePrivateVariables();
-    allClubMember.add(newMember);
-    allBooksInLibrary.add(newBook);
-    //add book to bookAvailableToCopy
+    addMemberToLibrary(newMember);
+    addBookToLibrary(newBook);
   }
   public ReadersClub(BookQueue bookqueue, Member[] newMembers, Book[] newBooks){
     this.bookQueue = bookqueue;
     initializePrivateVariables();
-    for(Member newMember : newMembers)
-      allClubMember.add(newMember);
-    for(Book newBook : newBooks)
-      allBooksInLibrary.add(newBook);
-    //add book to bookAvailableToCopy
+    for(int i = 0, n = newMembers.length; i<n; i++)
+      addMemberToLibrary(newMembers[i]);
+    for(int i = 0, n = newBooks.length; i<n; i++)
+      addBookToLibrary(newBooks[i]);
   }
   private void initializePrivateVariables(){
     allClubMember = new ArrayList<Member>();
@@ -40,37 +38,64 @@ public class ReadersClub {
     allBooksAvailableToBorrow = new HashMap<Book, Integer>();
     memberAndBooksBorrowed = new HashMap<Member, List<Book>>();
   }
-  private void addBookToBookAvailableToBorrow(Book newBookToAdd){
-
-  }
-  private void addBooksToBookAvailableToBorrow(Book[] newBookToAdd){
-
-  }
-  public void requestForBook(Member memberRequesting, Book bookMemberRequestsFor){
-
-  }
-  public Map<Book, Member> returnBookToEligibleMember(){
-    return null;
-  }
-  public boolean isMemberAvailableInLibrary(Member memberRequesting){
-    return true;
-  }
+  //add book
   public boolean isBookAvailableInLibrary(Book bookRequestingFor){
-    return true;
-  }
-  private boolean isBookAvailableToBorrow(Book bookRequestingFor){
-    return true;
+    if(allBooksInLibrary.contains(bookRequestingFor))
+      return true;
+    else
+      return false;
   }
   public void addBookToLibrary(Book...newBook){
-
+    for(Book newBookToAdd : newBook){
+      if(!isBookAvailableInLibrary(newBookToAdd)){
+        allBooksInLibrary.add(newBookToAdd);
+        addBookToBookAvailableToBorrow(newBookToAdd);
+      } else {
+        addBookToBookAvailableToBorrow(newBookToAdd);
+      }
+    }
   }
   public void addBooksToLibrary(Book[] newBooks){
-
+    for(int i = 0, n = newBooks.length; i<n; i++){
+      addBookToLibrary(newBooks[i]);
+    }
   }
+  private void addBookToBookAvailableToBorrow(Book newBookToAdd){
+    if(!isBookAvailableInLibrary(newBookToAdd)){
+      allBooksAvailableToBorrow.put(newBookToAdd, 1);
+    } else {
+      int numberOfCopies = allBooksAvailableToBorrow.get(newBookToAdd) + 1;
+      allBooksAvailableToBorrow.put(newBookToAdd, numberOfCopies);
+    }
+  }
+  //member
   public void addMemberToLibrary(Member...newMember){
 
   }
   public void addMembersToLibrary(Member[] newMembers){
 
   }
+  //borrow book
+  private boolean isBookAvailableToBorrow(Book bookRequestingFor){
+    return true;
+  }
+  public boolean isMemberAvailableInLibrary(Member memberRequesting){
+    if(allClubMember.contains(memberRequesting)) return true;
+    else return false;
+  }
+
+  private void addBooksToBookAvailableToBorrow(Book[] newBooksToAdd){
+    for(Book newBook : newBooksToAdd){
+      addBookToBookAvailableToBorrow(newBook);
+    }
+  }
+
+  public void requestForBook(Member memberRequesting, Book bookMemberRequestsFor){
+
+  }
+  public Map<Book, Member> returnBookToEligibleMember(){
+    return null;
+  }
+
+
 }
