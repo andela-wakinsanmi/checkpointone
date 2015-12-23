@@ -91,6 +91,12 @@ public class ReadersClubTest {
   }
   @Test
   public void testReturnBookToEligibleMember() throws Exception{
+    Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
+    Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
+    Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
+    Book[] bookArray = {myBook1, myBook2};
+    readersClub.addBooksToLibrary(bookArray);
+    readersClub.addBookToLibrary(myBook1, myBook2);
 
     readersClub.requestForBook(myMemberStudent1, myBook1);
     readersClub.requestForBook(myMemberStudent3, myBook1);

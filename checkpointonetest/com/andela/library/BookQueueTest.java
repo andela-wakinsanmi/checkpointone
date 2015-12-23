@@ -34,20 +34,20 @@ public class BookQueueTest {
   }
   @Test
   public void testReturnEligibleMemberForABook() throws Exception {
-    myTestQueue.addMemberToQueue(myBook1, myMemberStaff1);
-    myTestQueue.addMemberToQueue(myBook2,myMemberStaff2);
+    myTestQueue.addMemberToQueue(myBook1, myMemberStaff2);
     myTestQueue.addMemberToQueue(myBook2, myMemberStudent1);
+    myTestQueue.addMemberToQueue(myBook2,myMemberStaff1);
 
     Member myMemberStudent3 = new Student("George", 7301, "kafashan, Kaduna State");
     Member myMemberStudent4 = new Student("Bodunde", 6810);
     Member myMemberStaff3 = new Staff("Mainu", 2410);
     Member myMemberStaff4 = new Staff("Bamidele", 7490, "24, Mabushi rooad");
     myTestQueue.addMemberToQueue(myBook1, myMemberStaff3);
-    myTestQueue.addMemberToQueue(myBook2,myMemberStudent3);
+    myTestQueue.addMemberToQueue(myBook1,myMemberStudent3);
     myTestQueue.addMemberToQueue(myBook2, myMemberStudent3);
 
-    assertTrue(myTestQueue.returnEligibleMemberForABook(myBook1) == myMemberStaff1);
-    assertTrue(myTestQueue.returnEligibleMemberForABook(myBook2) == myMemberStaff2);
+    assertTrue(myTestQueue.returnEligibleMemberForABook(myBook1) == myMemberStaff2);
+    assertTrue(myTestQueue.returnEligibleMemberForABook(myBook2) == myMemberStaff1);
   }
 
   @Test

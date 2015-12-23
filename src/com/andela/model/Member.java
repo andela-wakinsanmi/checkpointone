@@ -3,6 +3,7 @@ package com.andela.model;
 import com.andela.member.Staff;
 import com.andela.member.Student;
 
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -15,7 +16,12 @@ public class Member implements Comparable<Member> {
   private String memberAddress;
 
   public Member(String memberName, int memberIdNumber){
-    this.memberRegistrationDate = new Date();
+    try{
+      this.memberRegistrationDate = new Date();
+      Thread.sleep(100);
+    } catch(Exception e){
+
+    }
     this.memberName = memberName;
     this.memberIdNumber = memberIdNumber;
   }
@@ -43,13 +49,15 @@ public class Member implements Comparable<Member> {
   public void setMemberAddress(String memberAddress) {
     this.memberAddress = memberAddress;
   }
+  public boolean equals(Member member){
+    return this.getMemberRegistrationDate() == member.getMemberRegistrationDate();
+  }
 
   @Override
-  public int compareTo(Member objectPassed) {
-    if(this instanceof Student && objectPassed instanceof Staff){
-      return 1;
-    } else {
-      return this.getMemberRegistrationDate().compareTo(objectPassed.getMemberRegistrationDate());
-    }
+  public int compareTo(Member member) {
+    if(this.getClass() == member.getClass()){
+      return this.getMemberRegistrationDate().compareTo(member.getMemberRegistrationDate());
+    } else if(member instanceof Student) return -1;
+     else return 1;
   }
 }
