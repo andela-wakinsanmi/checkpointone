@@ -8,7 +8,7 @@ import com.andela.model.Member;
 public class Student extends Member {
 
   private String studentDepartment;
-  private String studentSubjecctOfInterest;
+  private String studentSubjectOfInterest;
 
   public Student (String memberName, int memberIdNumber, String memberAddress){
     super(memberName, memberIdNumber, memberAddress);
@@ -26,12 +26,12 @@ public class Student extends Member {
     this.studentDepartment = studentDepartment;
   }
 
-  public String getStudentSubjecctOfInterest() {
-    return studentSubjecctOfInterest;
+  public String getStudentSubjectOfInterest() {
+    return studentSubjectOfInterest;
   }
 
-  public void setStudentSubjecctOfInterest(String studentSubjecctOfInterest) {
-    this.studentSubjecctOfInterest = studentSubjecctOfInterest;
+  public void setStudentSubjectOfInterest(String studentSubjectOfInterest) {
+    this.studentSubjectOfInterest = studentSubjectOfInterest;
   }
 }
 

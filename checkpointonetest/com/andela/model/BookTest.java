@@ -16,4 +16,16 @@ public class BookTest {
     bookTest.incrementBookCopies(increment);
     assertTrue(bookTest.getNumberOfCopies() == initialNumberOfCopies + increment);
   }
+  @Test
+  public void testdecrementBookCopies() throws Exception {
+    int decrement = 1;
+    int initialNumberOfCopies = bookTest.getNumberOfCopies();
+    bookTest.decrementBookCopies(decrement);
+    assertTrue(bookTest.getNumberOfCopies() == 1);
+    bookTest.setBookTitle("Rich Dad Poor Dad");
+    bookTest.incrementBookCopies(6);
+    bookTest.decrementBookCopies(5);
+    assertTrue(bookTest.getNumberOfCopies() == 2);
+
+  }
 }
