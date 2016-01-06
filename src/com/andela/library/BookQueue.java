@@ -11,10 +11,13 @@ import java.util.PriorityQueue;
  * Created by Spykins on 22/12/2015.
  */
 public class BookQueue {
+
   private Map<Book, PriorityQueue<Member>> queueForBook;
+
   public BookQueue(){
     queueForBook = new HashMap<Book, PriorityQueue<Member>>();
   }
+
   public void addMemberToQueue(Book bookRequested, Member memberRequestingForBook){
     if(hasQueueForBookRequested(bookRequested)){
       queueForBook.get(bookRequested).add(memberRequestingForBook);
@@ -30,16 +33,23 @@ public class BookQueue {
   }
 
   public boolean hasQueueForBookRequested(Book bookRequested){
-    if(queueForBook.containsKey(bookRequested)) return true;
-    else return false;
+    if(queueForBook.containsKey(bookRequested)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook){
     if (queueForBook.containsKey(bookRequested)) {
-      if(queueForBook.get(bookRequested).contains(memberRequestingForBook)) return true;
-      else return false;
-    } else
+      if(queueForBook.get(bookRequested).contains(memberRequestingForBook)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
       return false;
+    }
   }
 
 }

@@ -6,6 +6,7 @@ import com.andela.model.Member;
  * Created by Spykins on 21/12/2015.
  */
 public class Staff extends Member{
+
   private int staffPaidSalary;
   private int staffWorkHour;
   private String studentDepartment;
@@ -13,10 +14,10 @@ public class Staff extends Member{
   public Staff(String memberName, int memberIdNumber, String memberAddress){
     super(memberName, memberIdNumber, memberAddress);
   }
+
   public Staff(String memberName, int memberIdNumber){
     super(memberName,memberIdNumber);
   }
-
 
   public int getStaffPaidSalary() {
     return staffPaidSalary;

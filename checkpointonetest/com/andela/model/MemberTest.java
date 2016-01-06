@@ -21,7 +21,6 @@ public class MemberTest {
     Member myMemberStaff2 = new Staff("Ovay", 4970, "50, somewhere in Gwarimpa");
     Member myMemberStaff3 = new Staff("Mainu", 2410);
     Member myMemberStaff4 = new Staff("Bamidele", 7490, "24, Mabushi rooad");
-    Member myMember = new Member("myMember",2310);
     assertTrue(myMemberStaff2.compareTo(myMemberStaff1) ==  1);
     assertTrue(myMemberStaff1.compareTo(myMemberStudent1) == -1);
     assertTrue(myMemberStudent3.compareTo(myMemberStaff1) == 1);

@@ -9,7 +9,8 @@ import java.util.Date;
 /**
  * Created by Spykins on 21/12/2015.
  */
-public class Member implements Comparable<Member> {
+public abstract class Member implements Comparable<Member> {
+
   private String memberName;
   private int memberIdNumber;
   private Date memberRegistrationDate;
@@ -25,6 +26,7 @@ public class Member implements Comparable<Member> {
     this.memberName = memberName;
     this.memberIdNumber = memberIdNumber;
   }
+
   public Member(String memberName, int memberIdNumber, String memberAddress){
     this(memberName, memberIdNumber);
     this.memberAddress = memberAddress;
@@ -49,6 +51,7 @@ public class Member implements Comparable<Member> {
   public void setMemberAddress(String memberAddress) {
     this.memberAddress = memberAddress;
   }
+
   public boolean equals(Member member){
     return this.getMemberRegistrationDate() == member.getMemberRegistrationDate();
   }
@@ -57,7 +60,10 @@ public class Member implements Comparable<Member> {
   public int compareTo(Member member) {
     if(this.getClass() == member.getClass()){
       return this.getMemberRegistrationDate().compareTo(member.getMemberRegistrationDate());
-    } else if(member instanceof Student) return -1;
-     else return 1;
+    } else if(member instanceof Student) {
+      return -1;
+    } else {
+      return 1;
+    }
   }
 }

@@ -6,11 +6,14 @@ import com.andela.model.Member;
  * Created by Spykins on 21/12/2015.
  */
 public class Student extends Member {
+
   private String studentDepartment;
   private String studentSubjecctOfInterest;
+
   public Student (String memberName, int memberIdNumber, String memberAddress){
     super(memberName, memberIdNumber, memberAddress);
   }
+
   public Student(String memberName, int memberIdNumber){
     super(memberName,memberIdNumber);
   }

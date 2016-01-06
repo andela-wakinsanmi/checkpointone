@@ -12,6 +12,7 @@ import java.util.Map;
  * Created by Spykins on 23/12/2015.
  */
 public class ReadersClub {
+
   private List<Book>allBooksInLibrary;
   private Map<Member, List<Book>>memberAndBooksBorrowed;
   BookQueue bookQueue;
@@ -22,25 +23,32 @@ public class ReadersClub {
     addMemberToLibrary(newMember);
     addBookToLibrary(newBook);
   }
+
   public ReadersClub(BookQueue bookqueue, Member[] newMembers, Book[] newBooks){
     this.bookQueue = bookqueue;
     initializePrivateVariables();
-    for(int i = 0, n = newMembers.length; i<n; i++)
+    for(int i = 0, n = newMembers.length; i<n; i++) {
       addMemberToLibrary(newMembers[i]);
-    for(int i = 0, n = newBooks.length; i<n; i++)
+    }
+    for(int i = 0, n = newBooks.length; i<n; i++) {
       addBookToLibrary(newBooks[i]);
+    }
   }
+
   private void initializePrivateVariables(){
     allBooksInLibrary = new ArrayList<Book>();
     memberAndBooksBorrowed = new HashMap<Member, List<Book>>();
   }
+
   //add book
   public boolean isBookAvailableInLibrary(Book bookRequestingFor){
-    if(allBooksInLibrary.contains(bookRequestingFor))
+    if(allBooksInLibrary.contains(bookRequestingFor)) {
       return true;
-    else
+    } else {
       return false;
+    }
   }
+
   public void addBookToLibrary(Book...newBook){
     for(Book newBookToAdd : newBook){
       if(!isBookAvailableInLibrary(newBookToAdd)){
@@ -50,6 +58,7 @@ public class ReadersClub {
       }
     }
   }
+
   private void changeBookCopies(Book bookToChangeCopy, int valueToIncrement){
     int indexOfBook = allBooksInLibrary.indexOf(bookToChangeCopy);
     Book bookToIncrememnt = allBooksInLibrary.get(indexOfBook);
@@ -60,6 +69,7 @@ public class ReadersClub {
       addBookToLibrary(newBooks[i]);
     }
   }
+
   //member
   public void addMemberToLibrary(Member...newMembers){
     for(Member newMember : newMembers){
@@ -69,25 +79,32 @@ public class ReadersClub {
       }
     }
   }
+
   public boolean isMemberAvailableInLibrary(Member memberRequesting){
-    if(memberAndBooksBorrowed.containsKey(memberRequesting)) return true;
-    else return false;
+    if(memberAndBooksBorrowed.containsKey(memberRequesting)) {
+      return true;
+    } else {
+      return false;
+    }
   }
   public void addMembersToLibrary(Member[] newMembers){
-    for(int i = 0, n = newMembers.length; i<n; i++)
+    for(int i = 0, n = newMembers.length; i<n; i++) {
       addMemberToLibrary(newMembers[i]);
+    }
   }
   //borrow book
   private boolean isBookAvailableToBorrow(Book bookRequestingFor){
     if(isBookAvailableInLibrary(bookRequestingFor) && (bookRequestingFor.getNumberOfCopies() > 0) ){
       return true;
-    } else
+    } else {
       return false;
+    }
   }
 
   public void requestForBook(Member memberRequesting, Book bookMemberRequestsFor){
     bookQueue.addMemberToQueue(bookMemberRequestsFor, memberRequesting);
   }
+
   public Map<Book, Member> returnBookToEligibleMember(Book bookRequested){
     Map<Book, Member> bookBorrowedAndMember = new HashMap<Book, Member>();
     if(isBookAvailableToBorrow(bookRequested)){
@@ -97,6 +114,4 @@ public class ReadersClub {
     }
     return bookBorrowedAndMember;
   }
-
-
 }

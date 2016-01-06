@@ -66,7 +66,7 @@ public class BookQueueTest {
     myTestQueue.addMemberToQueue(myBook1, myMemberStaff1);
     myTestQueue.addMemberToQueue(myBook2,myMemberStaff2);
     myTestQueue.addMemberToQueue(myBook2, myMemberStudent1);
-    Member myMemberStaff10 = new Member("Blessing", 46729);
+    Member myMemberStaff10 = new Staff("Blessing", 46729);
 
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff1));
     assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff10));
