@@ -6,7 +6,10 @@ import com.andela.model.Book;
 import com.andela.model.Member;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ListIterator;
 
 import static org.junit.Assert.*;
 
@@ -58,7 +61,11 @@ public class ReadersClubTest {
     Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
     Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
     Book[] bookArray = {myBook1, myBook2};
+
     readersClub.addBooksToLibrary(bookArray);
+    assertTrue(myBook1.getNumberOfCopies() == 2);
+    assertTrue(myBook2.getNumberOfCopies() == 3);
+
     readersClub.addBookToLibrary(myBook1, myBook2);
 
     assertTrue(readersClub.isBookAvailableInLibrary(myBook1));
@@ -111,6 +118,34 @@ public class ReadersClubTest {
     HashMap<Book, Member>eligibleMember = new HashMap<>();
     eligibleMember.put(myBook1, myMemberStaff1);
     assertTrue(readersClub.returnBookToEligibleMember(myBook1).equals(eligibleMember));
+
+  }
+
+  @Test
+  public void returnBookToLibrary() throws Exception{
+    Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
+    Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
+    Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
+    Book[] bookArray = {myBook1, myBook2};
+
+    readersClub.addBooksToLibrary(bookArray);
+    assertTrue(myBook1.getNumberOfCopies() == 2);
+
+    readersClub.addBookToLibrary(myBook1, myBook2);
+    assertTrue(myBook1.getNumberOfCopies() == 3);
+
+    readersClub.requestForBook(myMemberStudent1, myBook1);
+    readersClub.requestForBook(myMemberStudent3, myBook1);
+    readersClub.requestForBook(myMemberStaff4, myBook1);
+    readersClub.requestForBook(myMemberStaff1,myBook1);
+
+    HashMap<Book, Member>eligibleMember = new HashMap<>();
+    eligibleMember.put(myBook1, myMemberStaff1);
+    assertTrue(readersClub.returnBookToEligibleMember(myBook1).equals(eligibleMember));
+    assertTrue(myBook1.getNumberOfCopies() == 2);
+
+    readersClub.returnBookToLibrary(myMemberStaff1, myBook1);
+    assertTrue(myBook1.getNumberOfCopies() == 3);
 
   }
 }

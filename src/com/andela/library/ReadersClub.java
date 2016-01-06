@@ -56,9 +56,16 @@ public class ReadersClub {
   }
 
   public void addBooksToLibrary(Book[] newBooks){
+    ///*
     for(Book book : newBooks){
       addBookToLibrary(book);
     }
+    //*/
+    /*
+    for(int i = 0, n = newBooks.length; i<n; i++){
+      addBookToLibrary(newBooks[i]);
+    }
+    */
   }
 
   //member
@@ -106,5 +113,16 @@ public class ReadersClub {
       bookBorrowedAndMember.put(bookRequested, memberThatGetsBook);
     }
     return bookBorrowedAndMember;
+  }
+
+  public void returnBookToLibrary(Member memberReturningBook, Book bookMemberIsReturning){
+    //check if member borrowed the book
+    //add book to available books
+    //remove book from member chain..
+    List listOfBookBorrowed = memberAndBooksBorrowed.get(memberReturningBook);
+    if(listOfBookBorrowed.contains(bookMemberIsReturning)){
+      bookMemberIsReturning.incrementBookCopies(1);
+      listOfBookBorrowed.remove(bookMemberIsReturning);
+    }
   }
 }
