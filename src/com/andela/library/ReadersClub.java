@@ -50,19 +50,14 @@ public class ReadersClub {
       if(!isBookAvailableInLibrary(newBookToAdd)){
         allBooksInLibrary.add(newBookToAdd);
       } else {
-        changeBookCopies(newBookToAdd, 1);
+        newBookToAdd.incrementBookCopies(1);
       }
     }
   }
 
-  private void changeBookCopies(Book bookToChangeCopy, int valueToIncrement){
-    int indexOfBook = allBooksInLibrary.indexOf(bookToChangeCopy);
-    Book bookToIncrememnt = allBooksInLibrary.get(indexOfBook);
-    bookToIncrememnt.incrementBookCopies(valueToIncrement);
-  }
   public void addBooksToLibrary(Book[] newBooks){
-    for(int i = 0, n = newBooks.length; i < n; i++){
-      addBookToLibrary(newBooks[i]);
+    for(Book book : newBooks){
+      addBookToLibrary(book);
     }
   }
 
@@ -83,11 +78,13 @@ public class ReadersClub {
       return false;
     }
   }
+
   public void addMembersToLibrary(Member[] newMembers){
     for(Member member : newMembers) {
       addMemberToLibrary(member);
     }
   }
+
   //borrow book
   private boolean isBookAvailableToBorrow(Book bookRequestingFor){
     if(isBookAvailableInLibrary(bookRequestingFor) && (bookRequestingFor.getNumberOfCopies() > 0) ){
@@ -105,7 +102,7 @@ public class ReadersClub {
     Map<Book, Member> bookBorrowedAndMember = new HashMap<Book, Member>();
     if(isBookAvailableToBorrow(bookRequested)){
       Member memberThatGetsBook = bookQueue.returnEligibleMemberForABook(bookRequested);
-      changeBookCopies(bookRequested, -1);
+      bookRequested.decrementBookCopies(1);
       bookBorrowedAndMember.put(bookRequested, memberThatGetsBook);
     }
     return bookBorrowedAndMember;

@@ -44,7 +44,7 @@ public class Book {
   }
 
   public void decrementBookCopies(int numberOfCopiesToDecrement){
-    if(numberOfCopiesToDecrement > 0 && (numberOfCopies - numberOfCopiesToDecrement < 0)){
+    if(numberOfCopiesToDecrement > 0 && (numberOfCopies - numberOfCopiesToDecrement >= 0)){
       this.numberOfCopies -= numberOfCopiesToDecrement;
     }
   }

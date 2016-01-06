@@ -21,11 +21,12 @@ public class BookTest {
     int decrement = 1;
     int initialNumberOfCopies = bookTest.getNumberOfCopies();
     bookTest.decrementBookCopies(decrement);
-    assertTrue(bookTest.getNumberOfCopies() == 1);
+    assertTrue(bookTest.getNumberOfCopies() == 0);
     bookTest.setBookTitle("Rich Dad Poor Dad");
+
     bookTest.incrementBookCopies(6);
     bookTest.decrementBookCopies(5);
-    assertTrue(bookTest.getNumberOfCopies() == 2);
+    assertTrue(bookTest.getNumberOfCopies() == 1);
 
   }
 }
