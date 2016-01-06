@@ -27,12 +27,8 @@ public class ReadersClub {
   public ReadersClub(BookQueue bookqueue, Member[] newMembers, Book[] newBooks){
     this.bookQueue = bookqueue;
     initializePrivateVariables();
-    for(int i = 0, n = newMembers.length; i<n; i++) {
-      addMemberToLibrary(newMembers[i]);
-    }
-    for(int i = 0, n = newBooks.length; i<n; i++) {
-      addBookToLibrary(newBooks[i]);
-    }
+    addMembersToLibrary(newMembers);
+    addBooksToLibrary(newBooks);
   }
 
   private void initializePrivateVariables(){
@@ -88,8 +84,8 @@ public class ReadersClub {
     }
   }
   public void addMembersToLibrary(Member[] newMembers){
-    for(int i = 0, n = newMembers.length; i<n; i++) {
-      addMemberToLibrary(newMembers[i]);
+    for(Member member : newMembers) {
+      addMemberToLibrary(member);
     }
   }
   //borrow book
