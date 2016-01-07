@@ -68,7 +68,7 @@ Methods are listed below:
   Member  is an Abstract Class, it's the super class of Student and Staff. The Member class implements Comparable
   interface to sort priority queue.
 
- __Client can't create an Object of this class __
+ Client can't create an Object of this class
 
  ###### Methods in Member class
 
