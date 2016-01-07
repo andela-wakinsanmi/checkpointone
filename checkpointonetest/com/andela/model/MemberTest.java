@@ -11,16 +11,24 @@ import static org.junit.Assert.*;
  */
 public class MemberTest {
 
+  Member myMemberStudent1 = new Student("Waleola", 1345, "12 Bello M Yusuf, Jabi");
+  Member myMemberStudent2 = new Student("Samuel", 4536);
+  Member myMemberStudent3 = new Student("George", 7301, "kafashan, Kaduna State");
+  Member myMemberStudent4 = new Student("Bodunde", 6810);
+  Member myMemberStaff1 = new Staff("Charles", 2091);
+  Member myMemberStaff2 = new Staff("Ovay", 4970, "50, somewhere in Gwarimpa");
+  Member myMemberStaff3 = new Staff("Mainu", 2410);
+  Member myMemberStaff4 = new Staff("Bamidele", 7490, "24, Mabushi rooad");
+
   @Test
   public void testCompareTo() throws Exception {
-    Member myMemberStudent1 = new Student("Waleola", 1345, "12 Bello M Yusuf, Jabi");
-    Member myMemberStudent2 = new Student("Samuel", 4536);
-    Member myMemberStudent3 = new Student("George", 7301, "kafashan, Kaduna State");
-    Member myMemberStudent4 = new Student("Bodunde", 6810);
-    Member myMemberStaff1 = new Staff("Charles", 2091);
-    Member myMemberStaff2 = new Staff("Ovay", 4970, "50, somewhere in Gwarimpa");
-    Member myMemberStaff3 = new Staff("Mainu", 2410);
-    Member myMemberStaff4 = new Staff("Bamidele", 7490, "24, Mabushi rooad");
+    myMemberStaff1.getMemberRegistrationDate();
+    myMemberStaff1.getMemberAddress();
+    myMemberStaff1.getMemberIdNumber();
+    myMemberStaff1.getMemberName();
+    myMemberStaff1.setMemberAddress("55 Moleye, Lagos");
+    myMemberStaff1.equals(myMemberStaff2);
+
     assertTrue(myMemberStaff2.compareTo(myMemberStaff1) ==  1);
     assertTrue(myMemberStaff1.compareTo(myMemberStudent1) == -1);
     assertTrue(myMemberStudent3.compareTo(myMemberStaff1) == 1);

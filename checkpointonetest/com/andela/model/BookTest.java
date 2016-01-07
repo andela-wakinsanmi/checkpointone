@@ -11,6 +11,13 @@ public class BookTest {
   Book bookTest = new Book("Lion King", 1024, "Waleola", 1);
   @Test
   public void testIncrementBookCopies() throws Exception {
+    bookTest.getBookTitle();
+    bookTest.getIsbnNumber();
+    bookTest.getNameOfAuthor();
+    bookTest.getNumberOfCopies();
+    bookTest.setBookTitle("Rich Dad Poor Dad");
+
+
     int increment = 5;
     int initialNumberOfCopies = bookTest.getNumberOfCopies();
     bookTest.incrementBookCopies(increment);
@@ -22,7 +29,6 @@ public class BookTest {
     int initialNumberOfCopies = bookTest.getNumberOfCopies();
     bookTest.decrementBookCopies(decrement);
     assertTrue(bookTest.getNumberOfCopies() == 0);
-    bookTest.setBookTitle("Rich Dad Poor Dad");
 
     bookTest.incrementBookCopies(6);
     bookTest.decrementBookCopies(5);

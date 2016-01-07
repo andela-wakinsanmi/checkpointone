@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
  */
 public class ReadersClubTest {
   BookQueue myTestQueue = new BookQueue();
+
   Member myMemberStudent1 = new Student("Waleola", 1345, "12 Bello M Yusuf, Jabi");
   Member myMemberStudent2 = new Student("Samuel", 4536);
   Member myMemberStudent3 = new Student("George", 7301, "kafashan, Kaduna State");
@@ -26,6 +27,7 @@ public class ReadersClubTest {
   Member myMemberStaff2 = new Staff("Ovay", 4970, "50, somewhere in Gwarimpa");
   Member myMemberStaff3 = new Staff("Mainu", 2410);
   Member myMemberStaff4 = new Staff("Bamidele", 7490, "24, Mabushi rooad");
+
   Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
   Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
   Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
@@ -40,6 +42,12 @@ public class ReadersClubTest {
     readersClub.requestForBook(myMemberStaff1,myBook1);
 
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStaff1));
+    assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStaff4));
+    assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent1));
+    assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent3));
+
+    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent2));
+    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStaff3));
     assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff4));
   }
 
@@ -52,6 +60,9 @@ public class ReadersClubTest {
 
     readersClub.addBookToLibrary(myBook1,myBook2);
     assertTrue(readersClub.isBookAvailableInLibrary(myBook1));
+    assertTrue(readersClub.isBookAvailableInLibrary(myBook2));
+
+    assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
     assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
   }
 
@@ -63,6 +74,7 @@ public class ReadersClubTest {
     Book[] bookArray = {myBook1, myBook2};
 
     readersClub.addBooksToLibrary(bookArray);
+
     assertTrue(myBook1.getNumberOfCopies() == 2);
     assertTrue(myBook2.getNumberOfCopies() == 3);
 
@@ -72,6 +84,7 @@ public class ReadersClubTest {
     assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
 
     readersClub.addBookToLibrary(myBook1, myBook2);
+
     assertTrue(myBook1.getNumberOfCopies() == 4);
     assertTrue(myBook2.getNumberOfCopies() == 5);
   }
@@ -84,6 +97,7 @@ public class ReadersClubTest {
     Member myMemberStudent4 = new Student("Bodunde", 6810);
 
     readersClub.addMemberToLibrary(myMemberStudent1,myMemberStudent2,myMemberStudent3);
+
     assertTrue(readersClub.isMemberAvailableInLibrary(myMemberStudent1));
     assertTrue(!readersClub.isMemberAvailableInLibrary(myMemberStudent4));
   }
@@ -107,8 +121,10 @@ public class ReadersClubTest {
     Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
     Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
     Book[] bookArray = {myBook1, myBook2};
+
     readersClub.addBooksToLibrary(bookArray);
     readersClub.addBookToLibrary(myBook1, myBook2);
+    //books copy is 3
 
     readersClub.requestForBook(myMemberStudent1, myBook1);
     readersClub.requestForBook(myMemberStudent3, myBook1);
@@ -117,7 +133,19 @@ public class ReadersClubTest {
 
     HashMap<Book, Member>eligibleMember = new HashMap<>();
     eligibleMember.put(myBook1, myMemberStaff1);
+
     assertTrue(readersClub.returnBookToEligibleMember(myBook1).equals(eligibleMember));
+
+    eligibleMember.put(myBook1, myMemberStaff4);
+
+    assertTrue(readersClub.returnBookToEligibleMember(myBook1).equals(eligibleMember));
+
+    eligibleMember.put(myBook1, myMemberStudent1);
+    assertTrue(readersClub.returnBookToEligibleMember(myBook1).equals(eligibleMember));
+
+    assertTrue(myBook1.getNumberOfCopies() == 0);
+    eligibleMember.put(myBook1, myMemberStudent3);
+    assertTrue(readersClub.returnBookToEligibleMember(myBook1) == null);
 
   }
 

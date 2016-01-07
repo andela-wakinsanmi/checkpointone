@@ -56,16 +56,9 @@ public class ReadersClub {
   }
 
   public void addBooksToLibrary(Book[] newBooks){
-    ///*
     for(Book book : newBooks){
       addBookToLibrary(book);
     }
-    //*/
-    /*
-    for(int i = 0, n = newBooks.length; i<n; i++){
-      addBookToLibrary(newBooks[i]);
-    }
-    */
   }
 
   //member
@@ -112,8 +105,10 @@ public class ReadersClub {
       bookRequested.decrementBookCopies(1);
       bookBorrowedAndMember.put(bookRequested, memberThatGetsBook);
       updateMemberAndBooksBorrowed(memberThatGetsBook, bookRequested);
+      return bookBorrowedAndMember;
+    } else {
+      return null;
     }
-    return bookBorrowedAndMember;
   }
 
   private void updateMemberAndBooksBorrowed (Member memberThatGetsBook, Book bookRequested ) {
@@ -135,10 +130,8 @@ public class ReadersClub {
       return false;
     }
   }
+
   public void returnBookToLibrary(Member memberReturningBook, Book bookMemberIsReturning){
-    //check if member borrowed the book
-    //add book to available books
-    //remove book from member chain..
     List listOfBookBorrowed = memberAndBooksBorrowed.get(memberReturningBook);
     if(listOfBookBorrowed.contains(bookMemberIsReturning)){
       bookMemberIsReturning.incrementBookCopies(1);

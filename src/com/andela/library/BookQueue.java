@@ -32,7 +32,7 @@ public class BookQueue {
     return queueForBook.get(bookRequested).poll();
   }
 
-  public boolean hasQueueForBookRequested(Book bookRequested){
+  protected boolean hasQueueForBookRequested(Book bookRequested){
     if(queueForBook.containsKey(bookRequested)) {
       return true;
     } else {
@@ -40,7 +40,7 @@ public class BookQueue {
     }
   }
 
-  public boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook){
+  protected boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook){
     if (queueForBook.containsKey(bookRequested)) {
       if(queueForBook.get(bookRequested).contains(memberRequestingForBook)) {
         return true;
