@@ -18,7 +18,7 @@ public class BookQueue {
     queueForBook = new HashMap<Book, PriorityQueue<Member>>();
   }
 
-  public void addMemberToQueue(Book bookRequested, Member memberRequestingForBook){
+  protected void addMemberToQueue(Book bookRequested, Member memberRequestingForBook){
     if(hasQueueForBookRequested(bookRequested)){
       queueForBook.get(bookRequested).add(memberRequestingForBook);
     } else {
@@ -28,7 +28,7 @@ public class BookQueue {
     }
   }
 
-  public Member returnEligibleMemberForABook(Book bookRequested){
+  protected Member returnEligibleMemberForABook(Book bookRequested){
     return queueForBook.get(bookRequested).poll();
   }
 

@@ -37,7 +37,7 @@ public class ReadersClub {
   }
 
   //add book
-  public boolean isBookAvailableInLibrary(Book bookRequestingFor){
+  protected boolean isBookAvailableInLibrary(Book bookRequestingFor){
     if(allBooksInLibrary.contains(bookRequestingFor)) {
       return true;
     } else {
