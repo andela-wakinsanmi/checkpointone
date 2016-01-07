@@ -68,7 +68,7 @@ Methods are listed below:
   Member  is an Abstract Class, it's the super class of Student and Staff. The Member class implements Comparable
   interface to sort priority queue.
 
- **Client can't create an Object of this class **
+ __Client can't create an Object of this class __
 
  ###### Methods in Member class
 
@@ -156,5 +156,4 @@ Methods are listed below:
  + `public void decrementBookCopies(int numberOfCopiesToDecrement)` - Decrements the copy of the book
 
 
-  - public Book(String bookTitle, int isbnNumber, String nameOfAuthor, int numberOfCopies)
   [Click to preview Book Class] (https://github.com/andela-wakinsanmi/checkpointone/blob/staging/src/com/andela/model/Book.java)
