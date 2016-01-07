@@ -111,10 +111,30 @@ public class ReadersClub {
       Member memberThatGetsBook = bookQueue.returnEligibleMemberForABook(bookRequested);
       bookRequested.decrementBookCopies(1);
       bookBorrowedAndMember.put(bookRequested, memberThatGetsBook);
+      updateMemberAndBooksBorrowed(memberThatGetsBook, bookRequested);
     }
     return bookBorrowedAndMember;
   }
 
+  private void updateMemberAndBooksBorrowed (Member memberThatGetsBook, Book bookRequested ) {
+    if(hasMemberBorrowedBook(memberThatGetsBook)){
+      List bookBorrowedByMember = memberAndBooksBorrowed.get(memberThatGetsBook);
+      bookBorrowedByMember.add(bookRequested);
+      memberAndBooksBorrowed.put(memberThatGetsBook, bookBorrowedByMember);
+    } else {
+      List listOfBookBorrowedByMember = new ArrayList<Book>();
+      listOfBookBorrowedByMember.add(bookRequested);
+      memberAndBooksBorrowed.put(memberThatGetsBook, listOfBookBorrowedByMember);
+    }
+  }
+
+  private boolean hasMemberBorrowedBook(Member memberRequesting){
+    if(memberAndBooksBorrowed.containsKey(memberRequesting)){
+      return true;
+    } else {
+      return false;
+    }
+  }
   public void returnBookToLibrary(Member memberReturningBook, Book bookMemberIsReturning){
     //check if member borrowed the book
     //add book to available books
