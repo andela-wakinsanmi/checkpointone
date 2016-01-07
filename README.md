@@ -66,11 +66,9 @@ Methods are listed below:
 ### Member Class
 
   Member  is an Abstract Class, it's the super class of Student and Staff. The Member class implements Comparable
-  interface to sort priority queue.
+  interface to sort priority queue. Client can't create an Object of this class
 
- Client can't create an Object of this class
-
- ###### Methods in Member class
+###### Methods in Member class
 
  + `getMemberName()` - Returns the name of member
  + `getMemberIdNumber()` - Returns the Id of Member
@@ -122,7 +120,7 @@ Methods are listed below:
     Member myMemberStudent2 = new Student("Samuel", 4536);
  ```
 
- ###### Methods in Student class
+###### Methods in Student class
 
  + `public String getStudentDepartment()`
  + `public void setStudentDepartment(String studentDepartment)`
@@ -145,7 +143,7 @@ Methods are listed below:
       Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
 ```
 
- ###### Methods in Book class
+###### Methods in Book class
 
  + `public String getBookTitle()`
  + `public int getIsbnNumber()`
