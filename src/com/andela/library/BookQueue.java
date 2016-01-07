@@ -37,6 +37,7 @@ public class BookQueue {
   }
 
   protected boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook) {
-    return queueForBook.containsKey(bookRequested) && queueForBook.get(bookRequested).contains(memberRequestingForBook);
+    return queueForBook.containsKey(bookRequested) &&
+        queueForBook.get(bookRequested).contains(memberRequestingForBook);
   }
 }

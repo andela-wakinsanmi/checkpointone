@@ -88,6 +88,7 @@ public class ReadersClub {
 
   public Map<Book, Member> returnBookToEligibleMember(Book bookRequested){
     Map<Book, Member> bookBorrowedAndMember = new HashMap<Book, Member>();
+
     if(isBookAvailableToBorrow(bookRequested)){
       Member memberThatGetsBook = bookQueue.returnEligibleMemberForABook(bookRequested);
       bookRequested.decrementBookCopies(1);
@@ -116,9 +117,11 @@ public class ReadersClub {
 
   public void returnBookToLibrary(Member memberReturningBook, Book bookMemberIsReturning){
     List listOfBookBorrowed = memberAndBooksBorrowed.get(memberReturningBook);
+
     if(listOfBookBorrowed.contains(bookMemberIsReturning)){
       bookMemberIsReturning.incrementBookCopies(1);
       listOfBookBorrowed.remove(bookMemberIsReturning);
+      memberAndBooksBorrowed.put(memberReturningBook, listOfBookBorrowed);
     }
   }
 }

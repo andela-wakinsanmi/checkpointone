@@ -1,5 +1,10 @@
 # Readers Club
 
+Readers Club is a Library Management Project. In this Reader’s club, everyone is a Member (Student or Staff).
+Members can borrow books based on their priority. Their priority depends on their time of entry, i.e. if
+two members are requesting for the same book at the same time, staff will have a higher precedence to a student,
+and an older student/staff will have higher precedence to the newer.
+
 ### ReadersClub class
 
 ReadersClub class manages a Book Club, the ReadersClub constructor accepts a BookQueue, Member

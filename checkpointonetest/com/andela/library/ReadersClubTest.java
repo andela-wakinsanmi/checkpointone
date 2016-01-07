@@ -22,15 +22,12 @@ public class ReadersClubTest {
   Member myMemberStudent1 = new Student("Waleola", 1345, "12 Bello M Yusuf, Jabi");
   Member myMemberStudent2 = new Student("Samuel", 4536);
   Member myMemberStudent3 = new Student("George", 7301, "kafashan, Kaduna State");
-  Member myMemberStudent4 = new Student("Bodunde", 6810);
   Member myMemberStaff1 = new Staff("Charles", 2091);
-  Member myMemberStaff2 = new Staff("Ovay", 4970, "50, somewhere in Gwarimpa");
   Member myMemberStaff3 = new Staff("Mainu", 2410);
   Member myMemberStaff4 = new Staff("Bamidele", 7490, "24, Mabushi rooad");
 
   Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
   Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
-  Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
 
   ReadersClub readersClub = new ReadersClub(myTestQueue,myMemberStaff1,myBook1);
 
@@ -46,9 +43,9 @@ public class ReadersClubTest {
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent1));
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent3));
 
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent2));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStaff3));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff4));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStudent2));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook1,myMemberStaff3));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff4));
   }
 
   @Test
@@ -59,11 +56,11 @@ public class ReadersClubTest {
     Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
 
     readersClub.addBookToLibrary(myBook1,myBook2);
+
     assertTrue(readersClub.isBookAvailableInLibrary(myBook1));
     assertTrue(readersClub.isBookAvailableInLibrary(myBook2));
 
-    assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
-    assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
+    assertFalse(readersClub.isBookAvailableInLibrary(myBook10));
   }
 
   @Test
@@ -81,7 +78,7 @@ public class ReadersClubTest {
     readersClub.addBookToLibrary(myBook1, myBook2);
 
     assertTrue(readersClub.isBookAvailableInLibrary(myBook1));
-    assertTrue(!readersClub.isBookAvailableInLibrary(myBook10));
+    assertFalse(readersClub.isBookAvailableInLibrary(myBook10));
 
     readersClub.addBookToLibrary(myBook1, myBook2);
 
@@ -99,7 +96,7 @@ public class ReadersClubTest {
     readersClub.addMemberToLibrary(myMemberStudent1,myMemberStudent2,myMemberStudent3);
 
     assertTrue(readersClub.isMemberAvailableInLibrary(myMemberStudent1));
-    assertTrue(!readersClub.isMemberAvailableInLibrary(myMemberStudent4));
+    assertFalse(readersClub.isMemberAvailableInLibrary(myMemberStudent4));
   }
 
   @Test
@@ -113,13 +110,12 @@ public class ReadersClubTest {
     readersClub.addMembersToLibrary(memberArray);
 
     assertTrue(readersClub.isMemberAvailableInLibrary(myMemberStudent1));
-    assertTrue(!readersClub.isMemberAvailableInLibrary(myMemberStudent4));
+    assertFalse(readersClub.isMemberAvailableInLibrary(myMemberStudent4));
   }
   @Test
   public void testReturnBookToEligibleMember() throws Exception{
     Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
     Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
-    Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
     Book[] bookArray = {myBook1, myBook2};
 
     readersClub.addBooksToLibrary(bookArray);
@@ -153,7 +149,6 @@ public class ReadersClubTest {
   public void returnBookToLibrary() throws Exception{
     Book myBook1 = new Book("Rich dad Poor dad", 23456, "Robert Kiyosaki", 2);
     Book myBook2 = new Book("21 indespensable quality of a leader", 87693, "John C Maxwell", 3);
-    Book myBook10 = new Book("What goes Around", 530462, "James hill", 2);
     Book[] bookArray = {myBook1, myBook2};
 
     readersClub.addBooksToLibrary(bookArray);

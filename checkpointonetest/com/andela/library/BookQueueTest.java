@@ -31,8 +31,8 @@ public class BookQueueTest {
 
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff1));
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStudent1));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff1));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff2));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff1));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff2));
   }
 
   @Test
@@ -79,7 +79,7 @@ public class BookQueueTest {
     myTestQueue.addMemberToQueue(myBook2, myMemberStudent1);
 
     assertTrue(myTestQueue.hasQueueForBookRequested(myBook1));
-    assertTrue(!myTestQueue.hasQueueForBookRequested(myBook10));
+    assertFalse(myTestQueue.hasQueueForBookRequested(myBook10));
   }
   @Test
   public void testIsMemberAlreadyinQueue() throws Exception {
@@ -93,9 +93,9 @@ public class BookQueueTest {
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff2));
     assertTrue(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStudent1));
 
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff10));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff1));
-    assertTrue(!myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff2));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff10));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook2, myMemberStaff1));
+    assertFalse(myTestQueue.isMemberAlreadyinQueue(myBook1, myMemberStaff2));
 
 
   }
