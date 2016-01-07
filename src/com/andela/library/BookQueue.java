@@ -33,23 +33,10 @@ public class BookQueue {
   }
 
   protected boolean hasQueueForBookRequested(Book bookRequested){
-    if(queueForBook.containsKey(bookRequested)) {
-      return true;
-    } else {
-      return false;
-    }
+    return queueForBook.containsKey(bookRequested);
   }
 
-  protected boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook){
-    if (queueForBook.containsKey(bookRequested)) {
-      if(queueForBook.get(bookRequested).contains(memberRequestingForBook)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
+  protected boolean isMemberAlreadyinQueue(Book bookRequested, Member memberRequestingForBook) {
+    return queueForBook.containsKey(bookRequested) && queueForBook.get(bookRequested).contains(memberRequestingForBook);
   }
-
 }

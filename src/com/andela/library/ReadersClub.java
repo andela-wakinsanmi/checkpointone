@@ -38,11 +38,7 @@ public class ReadersClub {
 
   //add book
   protected boolean isBookAvailableInLibrary(Book bookRequestingFor){
-    if(allBooksInLibrary.contains(bookRequestingFor)) {
-      return true;
-    } else {
-      return false;
-    }
+    return allBooksInLibrary.contains(bookRequestingFor);
   }
 
   public void addBookToLibrary(Book...newBook){
@@ -72,11 +68,7 @@ public class ReadersClub {
   }
 
   public boolean isMemberAvailableInLibrary(Member memberRequesting){
-    if(memberAndBooksBorrowed.containsKey(memberRequesting)) {
-      return true;
-    } else {
-      return false;
-    }
+    return memberAndBooksBorrowed.containsKey(memberRequesting);
   }
 
   public void addMembersToLibrary(Member[] newMembers){
@@ -87,11 +79,7 @@ public class ReadersClub {
 
   //borrow book
   private boolean isBookAvailableToBorrow(Book bookRequestingFor){
-    if(isBookAvailableInLibrary(bookRequestingFor) && (bookRequestingFor.getNumberOfCopies() > 0) ){
-      return true;
-    } else {
-      return false;
-    }
+    return isBookAvailableInLibrary(bookRequestingFor) && (bookRequestingFor.getNumberOfCopies() > 0);
   }
 
   public void requestForBook(Member memberRequesting, Book bookMemberRequestsFor){
@@ -106,9 +94,8 @@ public class ReadersClub {
       bookBorrowedAndMember.put(bookRequested, memberThatGetsBook);
       updateMemberAndBooksBorrowed(memberThatGetsBook, bookRequested);
       return bookBorrowedAndMember;
-    } else {
-      return null;
     }
+    return null;
   }
 
   private void updateMemberAndBooksBorrowed (Member memberThatGetsBook, Book bookRequested ) {
@@ -124,11 +111,7 @@ public class ReadersClub {
   }
 
   private boolean hasMemberBorrowedBook(Member memberRequesting){
-    if(memberAndBooksBorrowed.containsKey(memberRequesting)){
-      return true;
-    } else {
-      return false;
-    }
+    return memberAndBooksBorrowed.containsKey(memberRequesting);
   }
 
   public void returnBookToLibrary(Member memberReturningBook, Book bookMemberIsReturning){
