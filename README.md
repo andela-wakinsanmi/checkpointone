@@ -160,3 +160,6 @@ Methods are listed below:
 
 
   [Click to preview Book Class] (https://github.com/andela-wakinsanmi/checkpointone/blob/staging/src/com/andela/model/Book.java)
+  
+  ![readers club](https://cloud.githubusercontent.com/assets/16117695/15603951/97cec5aa-23f5-11e6-822c-2d20e68420e7.png)
+
